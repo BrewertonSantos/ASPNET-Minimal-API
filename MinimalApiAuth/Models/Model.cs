@@ -2,7 +2,7 @@
 
 public abstract class Model
 {
-    public Model() => Id = Guid.NewGuid();
+    protected Model() => Id = Guid.NewGuid();
     
     public Guid Id { get; set; }
 }
