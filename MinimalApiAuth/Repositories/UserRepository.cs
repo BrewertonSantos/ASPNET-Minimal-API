@@ -8,7 +8,7 @@ public static class UserRepository
     {
         var users = new List<UserModel?>
         {
-            new UserModel {UserName = "Brewerton", Password = "a00fb8cb", Role = "admin"},
+            new UserModel {UserName = "Brewerton", Password = "a00fb8cb", Role = "manager"},
             new UserModel {UserName = "Thiago", Password = "85c69264", Role = "employee"}
         };
 

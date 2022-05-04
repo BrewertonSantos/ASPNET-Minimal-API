@@ -61,4 +61,20 @@ app.MapGet("/authenticated", (ClaimsPrincipal user) =>
     return Results.NotFound(new {message = "Não foi possível recuperar as informações de usuário."});
 }).RequireAuthorization();
 
+app.MapGet("/main/admin", (ClaimsPrincipal user) =>
+{
+    if (user.Identity != null)
+        return Results.Ok(new {message = $"Autenticação efetuada com sucesso para {user.Identity.Name}."});
+    
+    return Results.NotFound(new {message = "Não foi possível recuperar as informações de usuário."});
+}).RequireAuthorization("Admin");
+
+app.MapGet("/main/employee", (ClaimsPrincipal user) =>
+{
+    if (user.Identity != null)
+        return Results.Ok(new {message = $"Autenticação efetuada com sucesso para {user.Identity.Name}."});
+    
+    return Results.NotFound(new {message = "Não foi possível recuperar as informações de usuário."});
+}).RequireAuthorization("Employee");
+
 app.Run();
