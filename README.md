@@ -17,7 +17,7 @@
   </p>
 </p>
 
-##  Tecnologias utilizadas
+## Tecnologias utilizadas
 [C# (Csharp) 10](https://devblogs.microsoft.com/dotnet/welcome-to-csharp-10/)
 
 [ASPNET 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
