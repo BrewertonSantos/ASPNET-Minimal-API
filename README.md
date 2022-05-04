@@ -1,4 +1,4 @@
-<h1 align="center">ASPNET Minimal API</h1>
+<h1 align="center">ASPNET Minimal API JWT Bearer</h1>
 <p align="center"><i>Demonstração da estrutura de uma minimal api com autenticação por JWT (JSON Web Token)</i></p>
 <p align="center" display="inline-block">
   <img src="https://img.shields.io/github/languages/top/BrewertonSantos/ASPNET-Minimal-API" alt="top-language"/>
