@@ -49,4 +49,6 @@ app.MapPost("/accounts/login", (UserModel model) =>
     return Results.Ok(new {user, token});
 });
 
+app.MapGet("/anonymous", () => { Results.Ok("Anônimo"); });
+
 app.Run();
