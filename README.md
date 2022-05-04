@@ -18,6 +18,9 @@
 </p>
 
 # Tecnologias utilizadas
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/73f51cd671e04bb9bfee7bd086f44201)](https://app.codacy.com/gh/BrewertonSantos/ASPNET-Minimal-API?utm_source=github.com&utm_medium=referral&utm_content=BrewertonSantos/ASPNET-Minimal-API&utm_campaign=Badge_Grade_Settings)
+
 [C# (Csharp) 10](https://devblogs.microsoft.com/dotnet/welcome-to-csharp-10/)
 
 [ASPNET 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
