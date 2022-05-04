@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using MinimalApiAuth;
 using System.Text;
@@ -6,9 +7,10 @@ using MinimalApiAuth.Models;
 using MinimalApiAuth.Repositories;
 using MinimalApiAuth.Services;
 
+var key = Encoding.ASCII.GetBytes(Configuration.Secret);
+
 var builder = WebApplication.CreateBuilder(args);
 
-var key = Encoding.ASCII.GetBytes(Configuration.Secret);
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -35,7 +37,9 @@ builder.Services.AddAuthorization(options =>
 var app = builder.Build();
 
 app.UseAuthentication();
-app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapGet("/anonymous", () => { Results.Ok("Anônimo"); }).AllowAnonymous();
 
 app.MapPost("/accounts/login", (UserModel model) =>
 {
@@ -49,6 +53,12 @@ app.MapPost("/accounts/login", (UserModel model) =>
     return Results.Ok(new {user, token});
 });
 
-app.MapGet("/anonymous", () => { Results.Ok("Anônimo"); }).AllowAnonymous();
+app.MapGet("/authenticated", (ClaimsPrincipal user) =>
+{
+    if (user.Identity != null)
+        return Results.Ok(new {message = $"Autenticação efetuada com sucesso para {user.Identity.Name}."});
+    
+    return Results.NotFound(new {message = "Não foi possível recuperar as informações de usuário."});
+}).RequireAuthorization();
 
 app.Run();
