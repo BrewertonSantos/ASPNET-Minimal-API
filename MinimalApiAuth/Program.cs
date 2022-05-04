@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using MinimalApiAuth;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using MinimalApiAuth.Models;
+using MinimalApiAuth.Repositories;
+using MinimalApiAuth.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +37,16 @@ var app = builder.Build();
 app.UseAuthentication();
 app.UseAuthentication();
 
-app.MapGet("/", () => "Hello World!");
+app.MapPost("/accounts/login", (UserModel model) =>
+{
+    var user = UserRepository.Get(model.UserName, model.Password);
+
+    if (user is null)
+        return Results.NotFound(new {message = "Nome de usuário ou senha incorretos."});
+
+    var token = TokenService.GenerateToken(user);
+
+    return Results.Ok(new {user, token});
+});
 
 app.Run();

@@ -8,8 +8,8 @@ public static class UserRepository
     {
         var users = new List<UserModel?>
         {
-            new UserModel {UserName = "Brewerton", Password = "a00fb8cb"},
-            new UserModel {UserName = "Thiago", Password = "85c69264"}
+            new UserModel {UserName = "Brewerton", Password = "a00fb8cb", Role = "admin"},
+            new UserModel {UserName = "Thiago", Password = "85c69264", Role = "employee"}
         };
 
         return users.FirstOrDefault(x => x?.UserName.ToLower() == username.ToLower() && x.Password == password);
